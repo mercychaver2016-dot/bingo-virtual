@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bingo Virtual</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell landing">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Bingo Virtual</p>
+          <h1>Bingo en vivo por link para fiestas, rifas y comunidades grandes.</h1>
+          <p class="hero-copy">
+            Crea una sala, comparte el enlace y recibe cientos de jugadores con cartones
+            unicos, numeros en directo y validacion automatica de ganadores.
+          </p>
+        </div>
+        <form id="create-room" class="panel">
+          <label>
+            Nombre del juego
+            <input name="title" value="Bingo Neon" maxlength="50" />
+          </label>
+          <label>
+            Estilo visual
+            <select name="theme">
+              <option value="cosmic">Cosmico</option>
+              <option value="fiesta">Fiesta</option>
+              <option value="arena">Arena</option>
+            </select>
+          </label>
+          <label>
+            Jugada ganadora
+            <select name="winPattern">
+              <option value="anyLine">Cualquier linea</option>
+              <option value="horizontal">Linea horizontal</option>
+              <option value="vertical">Linea vertical</option>
+              <option value="diagonal">Diagonal</option>
+              <option value="corners">Cuatro esquinas</option>
+              <option value="fullCard">Carton lleno</option>
+            </select>
+          </label>
+          <label>
+            Numeros del juego
+            <select name="maxNumber">
+              <option value="75">1 al 75</option>
+              <option value="90">1 al 90</option>
+              <option value="100">1 al 100</option>
+            </select>
+          </label>
+          <label>
+            Diseno del carton
+            <select name="cardStyle">
+              <option value="neon">Neon</option>
+              <option value="clasico">Clasico</option>
+              <option value="fiesta">Fiesta</option>
+              <option value="diamante">Diamante</option>
+              <option value="noche">Noche</option>
+            </select>
+          </label>
+          <button type="submit">Crear sala</button>
+        </form>
+      </section>
+      <section class="features">
+        <article>
+          <strong>Mas de 300 jugadores</strong>
+          <span>Arquitectura con EventSource, liviana para muchas conexiones.</span>
+        </article>
+        <article>
+          <strong>Link instantaneo</strong>
+          <span>Cada sala genera enlace de anfitrion y enlace publico.</span>
+        </article>
+        <article>
+          <strong>Bingo validado</strong>
+          <span>El servidor revisa filas, columnas y diagonales antes de confirmar.</span>
+        </article>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

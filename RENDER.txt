@@ -1,0 +1,30 @@
+Bingo Virtual en Render
+
+Configuracion para Render
+- Tipo: Web Service
+- Runtime: Node
+- Build Command: npm install
+- Start Command: npm start
+- Variable opcional:
+  MAX_PLAYERS=750
+
+Notas importantes
+- Render dara un enlace fijo parecido a:
+  https://bingo-virtual.onrender.com
+- Ese enlace no cambia como los enlaces trycloudflare.com.
+- El juego usa memoria del servidor. Si el servicio se reinicia, las salas activas se borran y hay que crear una sala nueva.
+- Para eventos con muchas personas, usa un plan de pago de Render. El plan gratis puede dormirse o reiniciarse.
+
+Pasos rapidos
+1. Sube esta carpeta a un repositorio GitHub.
+2. En Render: New > Web Service.
+3. Conecta el repositorio.
+4. Usa:
+   Build Command: npm install
+   Start Command: npm start
+5. Crea el servicio.
+6. Cuando Render termine, abre la URL onrender.com.
+
+Despues de crear el servicio
+- Copia la URL fija de Render.
+- Entra desde esa URL, crea la sala y comparte los links de jugadores generados ahi.

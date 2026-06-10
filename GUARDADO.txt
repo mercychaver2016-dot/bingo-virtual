@@ -1,0 +1,12 @@
+﻿# Bingo Virtual guardado
+
+Enlace publico activo ahora:
+https://pushing-tax-difference-entrance.trycloudflare.com
+
+Para levantar el bingo publico manualmente:
+Doble clic en INICIAR-BINGO-PUBLICO.bat
+
+Para instalar arranque automatico con Windows:
+Clic derecho en INSTALAR-ARRANQUE-AUTOMATICO.ps1 y ejecutar con PowerShell.
+
+Nota: el enlace trycloudflare.com puede cambiar si se reinicia el tunel. Para enlace permanente real se necesita dominio propio o hosting.

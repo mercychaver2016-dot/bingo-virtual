@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anfitrion | Bingo Virtual</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell app-grid">
+      <section class="stage">
+        <p class="eyebrow">Anfitrion</p>
+        <h1 id="room-title">Bingo Virtual</h1>
+        <div class="rule-pill" id="win-rule">Jugada: --</div>
+        <div class="mega-ball" id="current-ball">--</div>
+        <div class="host-actions">
+          <button id="draw-number">Sacar numero</button>
+          <button id="voice-toggle" class="secondary" type="button">Activar voz</button>
+          <button id="reset-game" class="secondary">Reiniciar</button>
+        </div>
+      </section>
+      <aside class="panel stack">
+        <div>
+          <span class="label">Jugadores</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div>
+          <span class="label">Codigo de sala</span>
+          <strong id="room-code">--</strong>
+        </div>
+        <label>
+          Jugada ganadora
+          <select id="host-win-pattern">
+            <option value="anyLine">Cualquier linea</option>
+            <option value="horizontal">Linea horizontal</option>
+            <option value="vertical">Linea vertical</option>
+            <option value="diagonal">Diagonal</option>
+            <option value="corners">Cuatro esquinas</option>
+            <option value="fullCard">Carton lleno</option>
+          </select>
+        </label>
+        <label>
+          Diseno del carton
+          <select id="host-card-style">
+            <option value="neon">Neon</option>
+            <option value="clasico">Clasico</option>
+            <option value="fiesta">Fiesta</option>
+            <option value="diamante">Diamante</option>
+            <option value="noche">Noche</option>
+          </select>
+        </label>
+        <div>
+          <span class="label">Link para esta computadora</span>
+          <input id="player-link" readonly />
+        </div>
+        <div>
+          <span class="label">Link corto con codigo</span>
+          <input id="code-link" readonly />
+        </div>
+        <div id="public-share" class="hidden">
+          <span class="label">Link publico internet</span>
+          <input id="public-link" readonly />
+          <p class="hint">Este es el enlace para jugadores fuera de tu WiFi.</p>
+        </div>
+        <div id="network-share" class="hidden">
+          <span class="label">Link para misma WiFi</span>
+          <input id="network-link" readonly />
+          <p class="hint">Comparte este con celulares o computadoras conectadas a tu misma red.</p>
+        </div>
+        <div>
+          <span class="label">Numeros cantados</span>
+          <div class="called-grid" id="called-grid"></div>
+        </div>
+        <div>
+          <span class="label">Ganadores</span>
+          <div id="winners" class="winners">Sin ganadores todavia</div>
+        </div>
+        <div>
+          <span class="label">Jugadores y cartones</span>
+          <div id="players-list" class="players-list">Sin jugadores todavia</div>
+        </div>
+      </aside>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

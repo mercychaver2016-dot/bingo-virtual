@@ -1,0 +1,36 @@
+Bingo Virtual - publicacion permanente
+
+Estado actual
+- El juego esta guardado en esta carpeta.
+- El enlace publico temporal actual es:
+  https://pushing-tax-difference-entrance.trycloudflare.com
+
+Importante
+- Ese enlace temporal funciona mientras la computadora, Node y Cloudflare Tunnel sigan abiertos.
+- Puede cambiar si se reinicia la computadora, se cierra el tunel, se cae internet o Cloudflare reemplaza el enlace temporal.
+
+Para que el enlace nunca cambie
+Necesitas una de estas dos opciones:
+
+1. Dominio propio con Cloudflare Tunnel fijo
+   - Requiere cuenta de Cloudflare.
+   - Requiere un dominio, por ejemplo tubingo.com.
+   - Se crea un tunel nombrado permanente.
+   - El juego puede quedar en una direccion fija como:
+     https://bingo.tudominio.com
+
+2. Hosting Node.js permanente
+   - Subir esta carpeta a un servidor Node.js.
+   - Configurar la variable PUBLIC_URL con la URL fija.
+   - El hosting mantiene el juego en internet sin depender de tu computadora.
+
+Comando para abrir el enlace temporal otra vez
+En PowerShell, dentro de la carpeta del proyecto:
+
+npm.cmd run public:cloudflare
+
+La URL nueva aparecera en:
+public-url.txt
+
+Nota
+El proyecto no se borra. Lo unico temporal es el enlace trycloudflare.com.

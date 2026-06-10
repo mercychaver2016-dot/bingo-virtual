@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: bingo-virtual
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MAX_PLAYERS
+        value: "750"

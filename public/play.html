@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jugador | Bingo Virtual</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell player-layout">
+      <section class="panel join-panel" id="join-panel">
+        <p class="eyebrow">Entrar al juego</p>
+        <h1 id="join-title">Bingo Virtual</h1>
+        <form id="join-room">
+          <label>
+            Tu nombre
+            <input name="name" placeholder="Ej. Ana" maxlength="32" required />
+          </label>
+          <button type="submit">Recibir carton</button>
+        </form>
+      </section>
+      <section class="play-zone hidden" id="play-zone">
+        <div class="topbar">
+          <div>
+            <span class="label">Numero actual</span>
+            <strong id="player-current">--</strong>
+          </div>
+          <div>
+            <span class="label">En sala</span>
+            <strong id="player-count">0</strong>
+          </div>
+          <div>
+            <span class="label">Jugada</span>
+            <strong id="player-rule">--</strong>
+          </div>
+          <button id="voice-toggle" class="secondary" type="button">Activar voz</button>
+          <button id="claim-bingo">Cantar bingo</button>
+        </div>
+        <div id="winner-banner" class="winner-banner hidden" role="status" aria-live="polite"></div>
+        <div class="bingo-card" id="bingo-card"></div>
+        <p id="claim-message" class="claim-message"></p>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

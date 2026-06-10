@@ -104,9 +104,25 @@ function renderRoom(room) {
   renderCalled(room.called, room.maxNumber);
   renderWinners(room.winners);
   renderWinnerBanner(room.winners);
+  syncPlayerCardAfterReset(room);
   updateSelectableNumbers();
   speakCurrentNumber(room.current);
   schedulePlayersRefresh();
+}
+
+async function syncPlayerCardAfterReset(room) {
+  if (!player || !room?.cardVersion || player.cardVersion === room.cardVersion) return;
+  try {
+    const payload = await api(`/api/rooms/${roomId}/player`, { playerId: player.id });
+    player = payload.player;
+    manualMarks = new Set();
+    sessionStorage.setItem(playerKey(), JSON.stringify(player));
+    saveManualMarks();
+    renderCard();
+    showPlayerMessage("Juego reiniciado. Tienes un carton nuevo.", "success");
+  } catch {
+    // The polling/event stream will try again on the next room update.
+  }
 }
 
 function renderWinnerBanner(winners) {

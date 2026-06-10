@@ -74,6 +74,7 @@ function publicRoom(room) {
     theme: room.theme,
     cardStyle: room.cardStyle,
     maxNumber: room.maxNumber,
+    cardVersion: room.cardVersion,
     called: room.called,
     current: room.current,
     playerCount: room.players.size,
@@ -90,6 +91,7 @@ function publicPlayers(room) {
     id: player.id,
     name: player.name,
     card: player.card,
+    cardVersion: player.cardVersion,
     joinedAt: player.joinedAt
   }));
 }
@@ -262,6 +264,7 @@ async function handleApi(req, res, url) {
       winPattern: WIN_PATTERNS[body.winPattern] ? body.winPattern : "anyLine",
       called: [],
       current: null,
+      cardVersion: 1,
       players: new Map(),
       clients: new Set(),
       heartbeat: null,
@@ -330,6 +333,17 @@ async function handleApi(req, res, url) {
     return;
   }
 
+  if (req.method === "POST" && action === "player") {
+    const body = await readBody(req);
+    const player = room.players.get(body.playerId);
+    if (!player) {
+      sendJson(res, 404, { error: "Jugador no encontrado." });
+      return;
+    }
+    sendJson(res, 200, { player, room: publicRoom(room) });
+    return;
+  }
+
   if (req.method === "GET" && action === "events") {
     res.writeHead(200, {
       "Content-Type": "text/event-stream",
@@ -358,6 +372,7 @@ async function handleApi(req, res, url) {
       id: randomUUID(),
       name: String(body.name || "Jugador").slice(0, 32),
       card: makeCard(room.maxNumber),
+      cardVersion: room.cardVersion,
       joinedAt: new Date().toISOString()
     };
     room.players.set(player.id, player);
@@ -390,7 +405,11 @@ async function handleApi(req, res, url) {
     room.called = [];
     room.current = null;
     room.winners = [];
-    for (const player of room.players.values()) player.card = makeCard(room.maxNumber);
+    room.cardVersion += 1;
+    for (const player of room.players.values()) {
+      player.card = makeCard(room.maxNumber);
+      player.cardVersion = room.cardVersion;
+    }
     broadcast(room);
     sendJson(res, 200, { room: publicRoom(room) });
     return;

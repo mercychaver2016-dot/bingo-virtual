@@ -192,6 +192,7 @@ async function initHost() {
   if (!$("#draw-number")) return;
   const playerLink = `${location.origin}/play.html?room=${roomId}`;
   $("#player-link").value = playerLink;
+  $("#public-link").value = playerLink;
   $("#player-link").addEventListener("focus", (event) => event.target.select());
   $("#code-link")?.addEventListener("focus", (event) => event.target.select());
   $("#public-link")?.addEventListener("focus", (event) => event.target.select());
@@ -238,7 +239,6 @@ async function refreshShareLinks() {
     const payload = await api("/api/network");
     if (payload.publicOrigin) {
       $("#public-link").value = `${payload.publicOrigin}/play.html?room=${roomId}`;
-      $("#public-share").classList.remove("hidden");
     }
     if (payload.origins?.length) {
       $("#network-link").value = `${payload.origins[0]}/play.html?room=${roomId}`;

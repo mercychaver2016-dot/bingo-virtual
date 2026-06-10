@@ -49,18 +49,19 @@
             <option value="noche">Noche</option>
           </select>
         </label>
-        <div>
-          <span class="label">Link para esta computadora</span>
-          <input id="player-link" readonly />
+        <div id="public-share" class="share-card">
+          <span class="label">Link publico para jugadores</span>
+          <input id="public-link" readonly />
+          <p class="hint">Cualquier persona con este link puede entrar y jugar desde internet.</p>
         </div>
         <div>
           <span class="label">Link corto con codigo</span>
           <input id="code-link" readonly />
+          <p class="hint">Tambien puedes compartir este link corto si la sala tiene codigo.</p>
         </div>
-        <div id="public-share" class="hidden">
-          <span class="label">Link publico internet</span>
-          <input id="public-link" readonly />
-          <p class="hint">Este es el enlace para jugadores fuera de tu WiFi.</p>
+        <div>
+          <span class="label">Link directo de esta sala</span>
+          <input id="player-link" readonly />
         </div>
         <div id="network-share" class="hidden">
           <span class="label">Link para misma WiFi</span>

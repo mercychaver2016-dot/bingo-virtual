@@ -95,6 +95,11 @@ select {
   background: rgba(0, 0, 0, 0.24);
 }
 
+input[readonly] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 label,
 .stack {
   display: grid;
@@ -311,6 +316,23 @@ label,
   color: var(--muted);
   font-size: 0.86rem;
   line-height: 1.45;
+}
+
+.share-card {
+  border: 1px solid rgba(0, 230, 184, 0.38);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(0, 230, 184, 0.08);
+}
+
+.share-card .label {
+  color: var(--accent);
+}
+
+.share-card input {
+  border-color: rgba(0, 230, 184, 0.56);
+  background: rgba(0, 0, 0, 0.34);
+  font-weight: 800;
 }
 
 .player-layout {

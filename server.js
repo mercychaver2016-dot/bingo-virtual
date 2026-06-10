@@ -113,6 +113,15 @@ function requestOrigin(req) {
   return `${protocol}://${host}`;
 }
 
+function isLocalOrigin(origin) {
+  try {
+    const host = new URL(origin).hostname;
+    return host === "localhost" || host === "127.0.0.1" || host.startsWith("192.168.") || host.startsWith("10.");
+  } catch {
+    return true;
+  }
+}
+
 function publicUrl() {
   if (process.env.PUBLIC_URL) return process.env.PUBLIC_URL.replace(/\/$/, "");
   try {
@@ -227,11 +236,15 @@ function hasBingo(card, called, pattern = "anyLine") {
 
 async function handleApi(req, res, url) {
   if (req.method === "GET" && url.pathname === "/api/network") {
+    const currentOrigin = requestOrigin(req);
+    const detectedPublicOrigin = publicUrl() || (isLocalOrigin(currentOrigin) ? "" : currentOrigin);
     sendJson(res, 200, {
-      publicOrigin: publicUrl(),
-      currentOrigin: requestOrigin(req),
+      publicOrigin: detectedPublicOrigin,
+      currentOrigin,
       origins: localNetworkOrigins(req.headers.host),
-      note: "Estos links funcionan solo para personas conectadas a la misma red WiFi/LAN."
+      note: detectedPublicOrigin
+        ? "Comparte el link publico para que cualquier persona con internet pueda jugar."
+        : "Estos links funcionan solo para personas conectadas a la misma red WiFi/LAN."
     });
     return;
   }
